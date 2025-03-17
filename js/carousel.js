@@ -18,7 +18,7 @@ export class Carousel {
         Carousel.Next(); //start
         Carousel._interval = setInterval(function () {
           Carousel.Next();
-        }, 5000);
+        }, 2000);
       }
     } else {
       throw "Method Start need a Array Variable.";
@@ -30,10 +30,15 @@ export class Carousel {
       this._sequence = 0;
     }
     let teste = document.querySelectorAll("main div img");
+    let teste2 = document.querySelectorAll("main div a");
     teste.forEach((element) => {
       element.style.display = "none";
     });
+    teste2.forEach((element) => {
+      element.style.display = "none";
+    });
     teste[this._sequence].style.display = "block";
+    teste2[this._sequence].style.display = "block";
     this._sequence++;
   }
 }

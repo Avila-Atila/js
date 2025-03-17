@@ -4,16 +4,31 @@ body {
   background: #ffffff;
   height: 100%;
   font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 html {
   height: 100%;
 }
 
+@keyframes transition {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 div#carousel {
-  height: 46vh;
+  /* height: 46vh; */
   width: 70%;
-  max-height: 628px;
+  border: 4px solid #1b357e;
+  border-radius: 10px;
+  border-style: inset;
+  overflow: hidden;
+  /* max-height: 628px; */
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
@@ -23,12 +38,24 @@ div#carousel {
     top: 0;
     left: 0; */
     /* max-height: 628px; */
+    animation: transition 1s;
   }
   margin: 0 auto;
 }
 
+.testeInvisivel {
+  opacity: 0;
+  width: 100%;
+}
+
+.testeVisivel {
+  opacity: 1;
+  width: 100%;
+}
+
 div#carousel-title a {
   text-decoration: none;
+  animation: transition 1s;
 }
 
 div#carousel-title {
@@ -37,6 +64,11 @@ div#carousel-title {
   margin-top: 10px;
   margin-bottom: 10px;
   font-weight: bold;
+}
+
+header {
+  display: flex;
+  align-items: center;
 }
 
 header ul {
@@ -56,10 +88,11 @@ header {
   margin-bottom: 10px;
   padding: 10px;
 }
-
-header div {
-  display: inline;
-  vertical-align: middle;
+.header__logo {
+  width: 8%;
+}
+#header__centralizar {
+  width: 8%;
 }
 
 header nav {
@@ -89,7 +122,11 @@ nav li {
 }
 
 main {
-  min-height: calc(100% - 167px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
 }
 
 nav#social {
