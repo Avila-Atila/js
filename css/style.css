@@ -2,7 +2,7 @@
 
 body {
   background: #ffffff;
-  height: 100%;
+  height: 100dvh;
   font-family: "Roboto", sans-serif;
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@ html {
 
 @keyframes transition {
   from {
-    opacity: 0;
+    opacity: 0.4;
   }
   to {
     opacity: 1;
@@ -22,40 +22,75 @@ html {
 }
 
 div#carousel {
-  /* height: 46vh; */
   width: 70%;
+  min-width: 320px;
   border: 4px solid #1b357e;
   border-radius: 10px;
   border-style: inset;
   overflow: hidden;
-  /* max-height: 628px; */
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  position: relative;
+  margin: 0 auto;
   img {
     width: 100%;
-    /* position: relative;
-    top: 0;
-    left: 0; */
-    /* max-height: 628px; */
-    animation: transition 1s;
+    z-index: -1;
+    animation: transition 1s linear;
   }
-  margin: 0 auto;
 }
 
-.testeInvisivel {
-  opacity: 0;
+#carousel__nav {
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
+  text-align: center;
+  z-index: 2;
 }
 
-.testeVisivel {
-  opacity: 1;
-  width: 100%;
+.carousel__nav__botao {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  z-index: 5;
+}
+.carousel__nav__botao__selecionado {
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
+#carousel button {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+#carousel__anterior {
+  left: 10px;
+}
+
+#carousel__proximo {
+  right: 10px;
+}
+
+#carousel button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
 div#carousel-title a {
   text-decoration: none;
   animation: transition 1s;
+  color: #1351d8;
+  margin: 0 auto;
+  max-width: fit-content;
 }
 
 div#carousel-title {
@@ -64,6 +99,7 @@ div#carousel-title {
   margin-top: 10px;
   margin-bottom: 10px;
   font-weight: bold;
+  width: 70%;
 }
 
 header {
