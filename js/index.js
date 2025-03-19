@@ -42,35 +42,3 @@ carouselArr.forEach((element) => {
 });
 
 Carousel.Start(carouselArr);
-
-// carArr.push(
-//   new Car(
-//     "nome",
-//     "preco",
-//     "alturaCacamba",
-//     "alturaVeiculo",
-//     "alturaSolo",
-//     "capacidadeCarga",
-//     "motor",
-//     "potencia",
-//     "volumeCacamba",
-//     "roda",
-//     "image"
-//   )
-// );
-
-// carArr.push(
-//   new Car(
-//     "nome2",
-//     "prec2o",
-//     "altu2raCacamba",
-//     "altu2raVeiculo",
-//     "altu2raSolo",
-//     "capa2cidadeCarga",
-//     "moto2r",
-//     "pote2ncia",
-//     "volu2meCacamba",
-//     "roda2",
-//     "image2"
-//   )
-// );

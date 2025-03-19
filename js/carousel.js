@@ -1,94 +1,81 @@
-//carousel
-
-//Array storage class
 export let carouselArr = [];
 
-//class Carousel
 export class Carousel {
   constructor(img, title, url) {
     this.img = img;
     this.title = title;
     this.url = url;
   }
+
   static Start(arr) {
-    this.teste = document.querySelectorAll("main div img");
-    this.teste2 = document.querySelectorAll("main div a");
-    this.teste3 = document.querySelectorAll("main div span");
-    this.teste3.forEach((element, i) => {
-      element.addEventListener("click", () => {
-        this.control(i);
-      });
-    });
-    document
-      .getElementById("carousel__anterior")
-      .addEventListener("click", () => {});
-    document
-      .getElementById("carousel__proximo")
-      .addEventListener("click", () => {
-        clearInterval(this._interval);
-        console.log(this._sequence);
-        Carousel.Next();
-        console.log(this._sequence);
-        Carousel._interval = setInterval(function () {
-          Carousel.Next();
-        }, 2000);
-        console.log("object");
-      });
+    this.teste = document.querySelectorAll("#carousel img");
+    this.teste2 = document.querySelectorAll("#carousel-title a");
+    this.teste3 = document.querySelectorAll("#carousel__nav span");
+
     if (arr) {
       if (arr.length > 0) {
-        Carousel._sequence = 0;
+        Carousel._sequence = -1;
         Carousel._size = arr.length;
-        Carousel.Next(); //start
-        Carousel._interval = setInterval(function () {
-          Carousel.Next();
-        }, 2000);
+        this.teste3.forEach((elemento, i) => {
+          elemento.addEventListener("click", () => {
+            clearInterval(this._interval);
+            this.control(i);
+            console.log(i);
+            console.log(this._sequence);
+          });
+        });
+        document
+          .getElementById("carousel__anterior")
+          .addEventListener("click", () => {
+            clearInterval(this._interval);
+            this.control("anterior");
+            // console.log(i);
+            // console.log(this._sequence);
+          });
+        document
+          .getElementById("carousel__proximo")
+          .addEventListener("click", () => {
+            clearInterval(this._interval);
+            this.control("proximo");
+          });
+        Carousel._interval = setInterval(() => Carousel.Next(), 2000);
+        Carousel.Next();
+      } else {
+        throw "Method Start need a Array Variable.";
       }
-    } else {
-      throw "Method Start need a Array Variable.";
     }
   }
 
   static Next() {
-    console.log(this._sequence);
-    if (this._sequence >= this._size || this._sequence < 0) {
-      this._sequence = 0;
-    }
-
-    [...this.teste, ...this.teste2].forEach((element, i) => {
-      element.style.display = "none";
-      if (this.teste3[i]) {
-        this.teste3[i].classList.remove("carousel__nav__botao__selecionado");
-      }
-    });
-    [this.teste[this._sequence], this.teste2[this._sequence]].forEach(
-      (element) => {
-        element.style.display = "block";
-        if (this.teste3[this._sequence]) {
-          this.teste3[this._sequence].classList.add(
-            "carousel__nav__botao__selecionado"
-          );
-        }
-      }
-    );
-
-    this._sequence++;
-    console.log(this._sequence);
+    this.control("proximo");
   }
 
   static control(param) {
-    [...this.teste, ...this.teste2].forEach((element, i) => {
-      element.style.display = "none";
-      if (this.teste3[i]) {
-        this.teste3[i].classList.remove("carousel__nav__botao__selecionado");
+    if (param === "proximo") {
+      this._sequence = (this._sequence + 1) % this._size;
+    } else if (param === "anterior") {
+      this._sequence = (this._sequence - 1 + this._size) % this._size;
+    } else if (typeof param === "number") {
+      this._sequence = param;
+    }
+
+    this.teste.forEach((img, i) => {
+      img.style.display = i === this._sequence ? "block" : "none";
+    });
+
+    this.teste2.forEach((title, i) => {
+      title.style.display = i === this._sequence ? "block" : "none";
+    });
+
+    this.teste3.forEach((elemento, i) => {
+      if (i === this._sequence) {
+        elemento.classList.add("carousel__nav__botao__selecionado");
+      } else {
+        elemento.classList.remove("carousel__nav__botao__selecionado");
       }
     });
 
-    [this.teste[param], this.teste2[param]].forEach((element) => {
-      element.style.display = "block";
-      if (this.teste3[param]) {
-        this.teste3[param].classList.add("carousel__nav__botao__selecionado");
-      }
-    });
-    this._sequence = param;
+    clearInterval(this._interval);
+    this._interval = setInterval(() => this.Next(), 2000);
   }
 }
