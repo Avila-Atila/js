@@ -47,8 +47,8 @@ div#carousel {
 }
 
 .carousel__nav__botao {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   display: inline-block;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 50%;

@@ -8,8 +8,9 @@
     <link href="css/reset.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/lancamento.css" rel="stylesheet" />
-    <script  src="js/compare.js"></script>
-    <script  src="js/index.js"></script>
+    <link rel="stylesheet" href="css/responsividade.css">
+   
+
 
   </head>
   <body>
@@ -33,16 +34,38 @@
     </header>
     <main>
       
-        <iframe
-          
-          src="https://www.youtube-nocookie.com/embed/vQsryuNmsL0?controls=0&autoplay=1&modestbranding=0&loop=1&mute=1&rel=0&hd=1"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      </div>
-     
+      <section class="section__lancamento__video">
+        <!-- <div class="section__lancamento__video__div">
+          <iframe
+            width="100%"
+            id="section__lancamento__video__div__frame"
+            height="100%"
+            src="https://www.youtube.com/embed/vQsryuNmsL0?autoplay=1&mute=1"
+            title="Ford Ranger 2022 | Gerações"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div> -->
+        <div class="section__lancamento__video__div__descricao">
+          <h2 class="section__lancamento__video__div__titulo">
+            Diferentes modelos, muita tecnologia!
+          </h2>
+          <p class="section__lancamento__video__div__texto">
+            A Ford Ranger 2022 é uma picape média robusta e versátil, projetada
+            para oferecer desempenho tanto no trabalho quanto no lazer, seu
+            câmbio pode ser manual de 6 marchas ou automático de 6 marchas. Seu
+            design segue a identidade visual da Ford, com grade imponente e
+            detalhes que variam entre versões mais simples e esportivas. Possui
+            opções avançadas de conforto e conveniência, como o sistema FordPass
+            Connect, que permite interagir com a picape via smartphone, e
+            recursos de segurança de ponta, a Ford Ranger 2022 proporciona uma
+            experiência de condução única. Verifique abaixo exclusividades de
+            cada versão!
+          </p>
+        </div>
+      </section>
         <ul class="modelcars">
           <li>
             <img src="img/XL Cabine.jpg" class="photocar" />
@@ -52,7 +75,7 @@
                   type="checkbox"
                   value="car1"
                   class="checkbox"
-                  onchange="SetCarToCompare(this, new Car('XL Cabine Simples 2.2 Diesel 4X4 MT 2022', 183850, 511, 1821, 232, 1234, 2.2, 160, 1420, 'Aço Estampado 16', 'img/XL Cabine.jpg'));"
+                
                 />
               </div>
               <div class="info">
@@ -74,7 +97,6 @@
                   type="checkbox"
                   value="car1"
                   class="checkbox"
-                  onchange="SetCarToCompare(this, new Car('XLS 2.2 Diesel 4X4 AT 2022', 220690, 511, 1821, 232, 1076, 2.2, 160, 1180, 'Aço Estampado 16', 'img/xls 2.2 diesel.jpg'));"
                 />
               </div>
               <div class="info">
@@ -94,7 +116,6 @@
                   type="checkbox"
                   value="car1"
                   class="checkbox"
-                  onchange="SetCarToCompare(this, new Car('Storm 3.2 Diesel 4X4 AT 2022', 222790, 511, 1821, 232, 1040, 3.2, 200, 1180, 'Liga Leve 17', 'img/storm.jpg'));"
                 />
               </div>
               <div class="info">
@@ -211,5 +232,26 @@
         </button>
       </div>
     </div>
+    <script   src="js/compare.js"></script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+<!-- 
+
+
+onchange="SetCarToCompare(this, new Car('XL Cabine Simples 2.2 Diesel 4X4 MT 2022', 183850, 511, 1821, 232, 1234, 2.2, 160, 1420, 'Aço Estampado 16', 'img/XL Cabine.jpg'));"
+
+
+
+onchange="SetCarToCompare(this, new Car('XLS 2.2 Diesel 4X4 AT 2022', 220690, 511, 1821, 232, 1076, 2.2, 160, 1180, 'Aço Estampado 16', 'img/xls 2.2 diesel.jpg'));"
+
+
+onchange="SetCarToCompare(this, new Car('Storm 3.2 Diesel 4X4 AT 2022', 222790, 511, 1821, 232, 1040, 3.2, 200, 1180, 'Liga Leve 17', 'img/storm.jpg'));" -->

@@ -19,16 +19,16 @@ export class Carousel {
         this.teste3.forEach((elemento, i) => {
           elemento.addEventListener("click", () => {
             clearInterval(this._interval);
-            this.control(i);
-            console.log(i);
-            console.log(this._sequence);
+            this.Next(i);
+            // console.log(i);
+            // console.log(this._sequence);
           });
         });
         document
           .getElementById("carousel__anterior")
           .addEventListener("click", () => {
             clearInterval(this._interval);
-            this.control("anterior");
+            this.Next("anterior");
             // console.log(i);
             // console.log(this._sequence);
           });
@@ -36,21 +36,17 @@ export class Carousel {
           .getElementById("carousel__proximo")
           .addEventListener("click", () => {
             clearInterval(this._interval);
-            this.control("proximo");
+            this.Next("proximo");
           });
         Carousel._interval = setInterval(() => Carousel.Next(), 2000);
-        Carousel.Next();
-      } else {
-        throw "Method Start need a Array Variable.";
+        Carousel.Next("proximo");
       }
+    } else {
+      throw "Method Start need a Array Variable.";
     }
   }
 
-  static Next() {
-    this.control("proximo");
-  }
-
-  static control(param) {
+  static Next(param) {
     if (param === "proximo") {
       this._sequence = (this._sequence + 1) % this._size;
     } else if (param === "anterior") {
@@ -76,6 +72,6 @@ export class Carousel {
     });
 
     clearInterval(this._interval);
-    this._interval = setInterval(() => this.Next(), 2000);
+    this._interval = setInterval(() => this.Next("proximo"), 2000);
   }
 }

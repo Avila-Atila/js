@@ -1,3 +1,39 @@
+.section__lancamento__video {
+  padding: 0% 1% 0%;
+  margin-bottom: auto;
+}
+
+.section__lancamento__video__div {
+  aspect-ratio: 16/9;
+  float: right;
+  width: 40vw;
+  margin-right: 1%;
+}
+
+.section__lancamento__video__div__descricao {
+  width: 50%;
+  padding-top: 2%;
+}
+
+.section__lancamento__video__div__titulo {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+.section__lancamento__video__div__texto {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+  text-align: justify;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+#section__lancamento__video__div__frame {
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: solid 2px var(--cor-azul-forte);
+}
 ul.modelcars {
   display: block;
   text-align: center;
