@@ -92,14 +92,30 @@ function GetCarArrPosition(arr, carClass) {
 }
 let ordemCarros = [];
 function SetCarToCompare(el, carClass) {
+  let checkbox = document.querySelectorAll("input[type='checkbox']");
   if (carClass instanceof Car) {
     if (el.checked) {
-      ordemCarros.push(carArr[GetCarArrPosition(carArr, carClass)]);
+      if (ordemCarros.length == 1) {
+        checkbox.forEach((element, i) => {
+          if (!checkbox[i].checked) {
+            checkbox[i].setAttribute("disabled", "true");
+          }
+        });
+      }
+      ordemCarros.push(GetCarArrPosition(carArr, carClass));
+      // ordemCarros.push(99);
+
       console.log(ordemCarros);
-      ordemCarros.sort();
     } else {
-      ordemCarros.pop([GetCarArrPosition(carArr, carClass)]);
-      ordemCarros.sort();
+      checkbox.forEach((element, i) => {
+        if (!checkbox[i].checked) {
+          checkbox[i].removeAttribute("disabled");
+        }
+      });
+
+      ordemCarros = ordemCarros.filter(
+        (x) => x !== GetCarArrPosition(carArr, carClass)
+      );
       console.log(ordemCarros);
     }
   } else {
@@ -112,20 +128,31 @@ function ShowCompare() {
     alert("Precisa marcar 2 carros para apresentar a comparação");
     return;
   }
-
-  UpdateCompareTable(ordemCarros);
+  let carrosDisplay = [];
+  ordemCarros.sort();
+  ordemCarros.forEach((element) => {
+    carrosDisplay.push(carArr[element]);
+  });
+  UpdateCompareTable(carrosDisplay);
   document.getElementById("compare").style.display = "block";
 }
 
 function HideCompare() {
   document.getElementById("compare").style.display = "none";
+  document.querySelectorAll("table tr img").forEach((img) => img.remove());
 }
 
 function UpdateCompareTable(element) {
-  element.sort();
+  let imagem = [];
+  element.forEach((car) => {
+    imagem.push(document.createElement("img"));
+  });
   element.forEach((carro, i) => {
     let posicao = i;
-    console.log(carro);
+    imagem[posicao].setAttribute("src", carro.image);
+    document
+      .getElementById(`compare_image_${posicao}`)
+      .insertAdjacentElement("afterbegin", imagem[posicao]);
     document.getElementById(`compare_modelo_${posicao}`).innerText = carro.nome;
     document.getElementById(`compare_alturacacamba_${posicao}`).innerText =
       carro.alturaCacamba;
