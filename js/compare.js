@@ -56,7 +56,7 @@ carArr.push(
     "1180",
     "Liga Leve 17",
     "R$ 220.690,00",
-    "img/xls 2.2 diesel.jgp"
+    "img/xls 2.2 diesel.jpg"
   )
 );
 
@@ -72,12 +72,13 @@ carArr.push(
     "1180",
     "Liga Leve 17",
     "R$ 222.790,00",
-    "img/storm.jgp"
+    "img/storm.jpg"
   )
 );
 
 checkbox = document.querySelectorAll(".checkbox");
 checkbox.forEach((element, i) => {
+  element.checked = false;
   element.addEventListener("change", () => {
     this.SetCarToCompare(element, carArr[i]);
   });
@@ -89,12 +90,17 @@ function GetCarArrPosition(arr, carClass) {
   }
   return -1;
 }
-
+let ordemCarros = [];
 function SetCarToCompare(el, carClass) {
   if (carClass instanceof Car) {
     if (el.checked) {
-      UpdateCompareTable(carClass);
+      ordemCarros.push(carArr[GetCarArrPosition(carArr, carClass)]);
+      console.log(ordemCarros);
+      ordemCarros.sort();
     } else {
+      ordemCarros.pop([GetCarArrPosition(carArr, carClass)]);
+      ordemCarros.sort();
+      console.log(ordemCarros);
     }
   } else {
     throw "You need set a Car Class";
@@ -102,12 +108,12 @@ function SetCarToCompare(el, carClass) {
 }
 
 function ShowCompare() {
-  if (carArr.length < 2) {
+  if (ordemCarros.length < 2 || ordemCarros.length > 2) {
     alert("Precisa marcar 2 carros para apresentar a comparação");
     return;
   }
 
-  //   UpdateCompareTable();
+  UpdateCompareTable(ordemCarros);
   document.getElementById("compare").style.display = "block";
 }
 
@@ -116,21 +122,25 @@ function HideCompare() {
 }
 
 function UpdateCompareTable(element) {
-  document.getElementById("compare_modelo_0").innerText = element.nome;
-  document.getElementById("compare_alturacacamba_0").innerText =
-    element.alturaCacamba;
-  document.getElementById("compare_alturaveiculo_0").innerText =
-    element.alturaVeiculo;
-  document.getElementById("compare_alturasolo_0").innerText =
-    element.alturaSolo;
-  document.getElementById("compare_capacidadecarga_0").innerText =
-    element.capacidadeCarga;
-  document.getElementById("compare_capacidadecarga_0").innerText =
-    element.motor;
-  document.getElementById("compare_motor_0").innerText = element.potencia;
-  document.getElementById("compare_potencia_0").innerText =
-    element.volumeCacamba;
-  document.getElementById("compare_volumecacamba_0").innerText = element.roda;
-  document.getElementById("compare_roda_0").innerText = element.preco;
-  document.getElementById("compare_preco_0").innerText = element.image;
+  element.sort();
+  element.forEach((carro, i) => {
+    let posicao = i;
+    console.log(carro);
+    document.getElementById(`compare_modelo_${posicao}`).innerText = carro.nome;
+    document.getElementById(`compare_alturacacamba_${posicao}`).innerText =
+      carro.alturaCacamba;
+    document.getElementById(`compare_alturaveiculo_${posicao}`).innerText =
+      carro.alturaVeiculo;
+    document.getElementById(`compare_alturasolo_${posicao}`).innerText =
+      carro.alturaSolo;
+    document.getElementById(`compare_capacidadecarga_${posicao}`).innerText =
+      carro.capacidadeCarga;
+    document.getElementById(`compare_motor_${posicao}`).innerText = carro.motor;
+    document.getElementById(`compare_potencia_${posicao}`).innerText =
+      carro.potencia;
+    document.getElementById(`compare_volumecacamba_${posicao}`).innerText =
+      carro.volumeCacamba;
+    document.getElementById(`compare_roda_${posicao}`).innerText = carro.roda;
+    document.getElementById(`compare_preco_${posicao}`).innerText = carro.preco;
+  });
 }
