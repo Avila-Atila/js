@@ -133,6 +133,7 @@ function ShowCompare() {
   ordemCarros.forEach((element) => {
     carrosDisplay.push(carArr[element]);
   });
+  document.querySelectorAll("table tr img").forEach((img) => img.remove());
   UpdateCompareTable(carrosDisplay);
   document.getElementById("compare").style.display = "block";
 }
@@ -150,6 +151,7 @@ function UpdateCompareTable(element) {
   element.forEach((carro, i) => {
     let posicao = i;
     imagem[posicao].setAttribute("src", carro.image);
+    imagem[posicao].classList.add("imagemProdutoTabela");
     document
       .getElementById(`compare_image_${posicao}`)
       .insertAdjacentElement("afterbegin", imagem[posicao]);

@@ -24,7 +24,9 @@ html {
 div#carousel {
   width: 70%;
   min-width: 320px;
-  border: 4px solid #1b357e;
+  border: 2px solid #1b357e;
+  outline-style: outset;
+  outline-color: #1b357e;
   border-radius: 10px;
   border-style: inset;
   overflow: hidden;

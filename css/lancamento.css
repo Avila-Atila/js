@@ -7,7 +7,6 @@
   aspect-ratio: 16/9;
   float: right;
   width: 40vw;
-  margin-right: 1%;
 }
 
 .section__lancamento__video__div__descricao {
@@ -81,11 +80,12 @@ img.photocar {
 
 table {
   border-collapse: collapse;
-  width: 80%;
+  width: 90%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 2vh;
+
   margin-bottom: 10px;
+  font-size: 0.7rem;
 }
 
 th,
@@ -106,17 +106,35 @@ tr:nth-child(even) {
 div#compare {
   position: absolute;
   display: none;
-  width: 50vw;
-  max-width: 800px;
-  min-width: 400px;
-  height: 80vh;
+  width: 50%;
+  max-width: 700px;
+  min-width: fit-content;
+  height: fit-content;
   max-height: 700px;
+
   min-height: 350px;
   background: #fff;
-  top: calc(100vh - 80%);
-  left: 25vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* right: 12.5vw; */
+
   border-radius: 10px;
-  padding: 10px;
+  /* padding: 10px; */
   -webkit-box-shadow: 1px 1px 6px 0px rgb(0 0 0 / 34%);
   box-shadow: 1px 1px 6px 0px rgb(0 0 0 / 34%);
+}
+/* 
+@media screen and (max-width: 392px) {
+  div#compare {
+    overflow-x: clip;
+    left: 1.5vw;
+    right: 1.5vw;
+    top: calc(100vh - 50%);
+  }
+} */
+
+.imagemProdutoTabela {
+  width: 70%;
+  min-width: 95px;
 }
