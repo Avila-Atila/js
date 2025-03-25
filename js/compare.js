@@ -49,9 +49,11 @@ function SetCarToCompare(el, carClass) {
   if (el.checked) {
     carArr[GetCarArrPosition(el)] = carClass;
     ordemCarros.push(el.value);
+    console.log(carArr);
   } else {
-    carArr[GetCarArrPosition(el.value)] = null;
+    carArr[GetCarArrPosition(el)] = null;
     ordemCarros = ordemCarros.filter((x) => x !== el.value);
+    console.log(carArr);
   }
 
   if (ordemCarros.length >= 2) {

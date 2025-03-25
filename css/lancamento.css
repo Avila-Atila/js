@@ -38,12 +38,20 @@ ul.modelcars {
   text-align: center;
   margin-bottom: 40px;
 }
+.modelcars:hover > :not(:hover) {
+  opacity: 0.8;
+}
 
 ul.modelcars li {
   display: inline-block;
   text-align: left;
-  width: 300px;
+
   vertical-align: top;
+  border-radius: 6px;
+}
+
+ul.modelcars li:hover {
+  border-radius: 6px;
 }
 
 img.photocar {
