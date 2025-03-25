@@ -4,6 +4,7 @@ let carArr = [];
 class Car {
   constructor(
     nome,
+    preco,
     alturaCacamba,
     alturaVeiculo,
     alturaSolo,
@@ -12,7 +13,6 @@ class Car {
     potencia,
     volumeCacamba,
     roda,
-    preco,
     image
   ) {
     this.nome = nome;
@@ -29,82 +29,31 @@ class Car {
   }
 }
 
-carArr.push(
-  new Car(
-    "XL Cabine Simples 2.2 Diesel 4X4 MT 2022",
-    "511",
-    "1821",
-    "232",
-    "1234",
-    "2.2",
-    "160",
-    "1420",
-    "Aço Esampado 16",
-    "R$ 183.850,00",
-    "img/XL Cabine.jpg"
-  )
-);
-carArr.push(
-  new Car(
-    "XLS 2.2 Diesel 4X4 AT 2022",
-    "511",
-    "1821",
-    "232",
-    "1076",
-    "2.2",
-    "160",
-    "1180",
-    "Liga Leve 17",
-    "R$ 220.690,00",
-    "img/xls 2.2 diesel.jpg"
-  )
-);
-
-carArr.push(
-  new Car(
-    "Storm 3.2 Diesel 4X4 AT 2022",
-    "511",
-    "1821",
-    "232",
-    "1040",
-    "3.2",
-    "200",
-    "1180",
-    "Liga Leve 17",
-    "R$ 222.790,00",
-    "img/storm.jpg"
-  )
-);
-
 const checkbox = document.querySelectorAll(".checkbox");
+
 checkbox.forEach((element, i) => {
   element.checked = false;
-  element.addEventListener("change", () => {
-    this.SetCarToCompare(element, carArr[i]);
-  });
 });
-// search on array if exist carClass returning 1 if not return -1
-function GetCarArrPosition(arr, carClass) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i].nome === carClass.nome) return i;
-  }
-  return -1;
+
+function GetCarArrPosition(el) {
+  return Number(el.value);
 }
+
 let ordemCarros = [];
+
 function SetCarToCompare(el, carClass) {
-  if (carClass instanceof Car) {
-    if (el.checked) {
-      ordemCarros.push(GetCarArrPosition(carArr, carClass));
-      console.log(ordemCarros);
-    } else {
-      ordemCarros = ordemCarros.filter(
-        (x) => x !== GetCarArrPosition(carArr, carClass)
-      );
-      console.log(ordemCarros);
-    }
-  } else {
-    throw "You need set a Car Class";
+  if (!carClass instanceof Car) {
+    return "You need set a Car Class";
   }
+
+  if (el.checked) {
+    carArr[GetCarArrPosition(el)] = carClass;
+    ordemCarros.push(el.value);
+  } else {
+    carArr[GetCarArrPosition(el.value)] = null;
+    ordemCarros = ordemCarros.filter((x) => x !== el.value);
+  }
+
   if (ordemCarros.length >= 2) {
     checkbox.forEach((element) => {
       if (!element.checked) {
@@ -119,7 +68,7 @@ function SetCarToCompare(el, carClass) {
 }
 
 function ShowCompare() {
-  if (ordemCarros.length < 2 || ordemCarros.length > 2) {
+  if (ordemCarros.length != 2) {
     alert("Precisa marcar 2 carros para apresentar a comparação");
     return;
   }

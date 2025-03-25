@@ -124,15 +124,13 @@ div#compare {
   -webkit-box-shadow: 1px 1px 6px 0px rgb(0 0 0 / 34%);
   box-shadow: 1px 1px 6px 0px rgb(0 0 0 / 34%);
 }
-/* 
-@media screen and (max-width: 392px) {
+
+@media screen and (max-width: 300px) {
   div#compare {
-    overflow-x: clip;
-    left: 1.5vw;
-    right: 1.5vw;
-    top: calc(100vh - 50%);
+    overflow: auto;
+    min-width: 90%;
   }
-} */
+}
 
 .imagemProdutoTabela {
   width: 70%;
