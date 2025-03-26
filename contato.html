@@ -56,20 +56,7 @@
               class="fordform"
               required
             />
-            <input
-              type="tel"
-              name="cpf"
-              placeholder="CPF*"
-              class="fordform"
-              required
-            />
-            <input
-              type="text"
-              name="sobrenome"
-              placeholder="SOBRENOME*"
-              class="fordform"
-              required
-            />
+
             <input
               type="tel"
               name="telefone"
@@ -77,10 +64,18 @@
               class="fordform"
               required
             />
+
+            <textarea
+              name="mensagem"
+              placeholder="MENSAGEM*"
+              class="fordform"
+              required
+            ></textarea>
             <select id="tipoDeContato" name="contato" class="fordform" required>
-              <option value="">COMO DESEJA SER CONTATADO</option>
-              <option value="telefone">TELEFONE</option>
-              <option value="email">E-MAIL</option>
+              <option value="">Tipo de Contato</option>
+              <option value="elogio">ELOGIO</option>
+              <option value="reclamação">RECLAMAÇÃO</option>
+              <option value="solicitacao">SOLICITAÇÃO</option>
             </select>
             <button type="submit" onclick="Enviar()">Enviar</button>
           </form>

@@ -1,27 +1,24 @@
 //class contato
 
 class contato {
-  constructor(nome, sobrenome, email, cpf, telefone, contato) {
+  constructor(nome, email, telefone, mensagem) {
     this.nome = nome;
-    this.sobrenome = sobrenome;
     this.email = email;
-    this.cpf = cpf;
     this.telefone = telefone;
-    this.contato = contato;
+    this.mensagem = mensagem;
   }
   static enviarInfo(objeto) {
-    console.log(objeto);
+    this.objetoFinal = objeto;
+    console.log(this.objetoFinal);
   }
 }
 
 function Post(form) {
   let data = new contato(
     form.elements.namedItem("nome").value,
-    form.elements.namedItem("sobrenome").value,
     form.elements.namedItem("email").value,
-    form.elements.namedItem("cpf").value,
     form.elements.namedItem("telefone").value,
-    form.elements.namedItem("contato").value
+    form.elements.namedItem("mensagem").value
   );
   contato.enviarInfo(data);
 }
@@ -33,7 +30,7 @@ function Enviar() {
 
   if (nome.value != "" && campo.value != "") {
     alert(
-      `Obrigado sr(a) ${nome.value} os seus dados foram encaminhados com sucesso. Entraremos em contato pelo seu ${campo.value} `
+      `Obrigado sr(a) ${nome.value} os seus dados foram encaminhados com sucesso. `
     );
   }
 }
