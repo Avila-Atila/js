@@ -23,22 +23,30 @@ carouselArr.push(
     "lancamento.html"
   )
 );
-
-const container = document.getElementById("carousel");
-const container2 = document.getElementById("carousel-title");
-const container3 = document.getElementById("carousel__nav");
 carouselArr.forEach((element) => {
   let link = document.createElement("a");
   let imagem = document.createElement("img");
   let span = document.createElement("span");
-  link.setAttribute("href", element.url);
+  if (element.url != "lancamento.html") {
+    link.setAttribute("href", element.url);
+    link.setAttribute("target", "_blank");
+  } else {
+    link.setAttribute("href", element.url);
+  }
+
   link.innerText = element.title;
   imagem.setAttribute("src", element.img);
   imagem.classList.add("imagem");
   span.classList.add("carousel__nav__botao");
-  container.insertAdjacentElement("beforeEnd", imagem);
-  container2.insertAdjacentElement("beforeEnd", link);
-  container3.insertAdjacentElement("afterBegin", span);
+  document
+    .getElementById("carousel")
+    .insertAdjacentElement("beforeEnd", imagem);
+  document
+    .getElementById("carousel-title")
+    .insertAdjacentElement("beforeEnd", link);
+  document
+    .getElementById("carousel__nav")
+    .insertAdjacentElement("afterBegin", span);
 });
 
 Carousel.Start(carouselArr);

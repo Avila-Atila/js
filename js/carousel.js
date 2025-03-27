@@ -20,8 +20,6 @@ export class Carousel {
           elemento.addEventListener("click", () => {
             clearInterval(this._interval);
             this.Next(i);
-            // console.log(i);
-            // console.log(this._sequence);
           });
         });
         document
@@ -29,8 +27,6 @@ export class Carousel {
           .addEventListener("click", () => {
             clearInterval(this._interval);
             this.Next("anterior");
-            // console.log(i);
-            // console.log(this._sequence);
           });
         document
           .getElementById("carousel__proximo")
@@ -54,7 +50,7 @@ export class Carousel {
     } else if (typeof param === "number") {
       this._sequence = param;
     }
-
+    console.log(this._sequence);
     this.teste.forEach((img, i) => {
       img.style.display = i === this._sequence ? "block" : "none";
     });
