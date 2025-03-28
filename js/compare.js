@@ -117,7 +117,8 @@ function UpdateCompareTable(lista) {
       carArr[posicao].volumeCacamba;
     document.getElementById(`compare_roda_${i}`).innerText =
       carArr[posicao].roda;
-    document.getElementById(`compare_preco_${i}`).innerText =
-      carArr[posicao].preco;
+    document.getElementById(`compare_preco_${i}`).innerText = carArr[
+      posicao
+    ].preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
   });
 }

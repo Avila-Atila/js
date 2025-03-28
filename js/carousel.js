@@ -50,7 +50,7 @@ export class Carousel {
     } else if (typeof param === "number") {
       this._sequence = param;
     }
-    console.log(this._sequence);
+
     this.teste.forEach((img, i) => {
       img.style.display = i === this._sequence ? "block" : "none";
     });

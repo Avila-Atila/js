@@ -1,7 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+:root {
+  --cor-azul-fraca: #1351d8;
+  --cor-azul-forte: #1b357e;
+  --cor-branca: white;
+}
 
 body {
-  background: #ffffff;
+  background: var(--cor-branca);
   height: 100dvh;
   font-family: "Roboto", sans-serif;
   display: flex;
@@ -22,10 +27,11 @@ html {
 }
 
 div#carousel {
-  width: 60%;
-  border: 2px solid #1b357e;
+  width: 80%;
+  max-width: 1000px;
+  border: 2px solid var(--cor-azul-forte);
   outline-style: outset;
-  outline-color: #1b357e;
+  outline-color: var(--cor-azul-forte);
   border-radius: 10px;
   border-style: inset;
   overflow: hidden;
@@ -48,17 +54,27 @@ div#carousel {
 }
 
 .carousel__nav__botao {
-  width: 20px;
-  height: 20px;
+  width: 1.5vw;
+  height: 1.5vw;
+  max-height: 20px;
+  max-width: 20px;
+  min-width: 15px;
+  min-height: 15px;
   display: inline-block;
-  background-color: rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   margin: 0 5px;
   cursor: pointer;
-  z-index: 5;
+  z-index: 1s;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 1)
+  );
+  background-size: 100px 1px;
 }
 .carousel__nav__botao__selecionado {
-  background-color: rgba(255, 255, 255, 0.9);
+  background-position: 30px 0px;
+  transition: background 0.5s;
 }
 
 #carousel button {
@@ -69,7 +85,7 @@ div#carousel {
   background: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 0.3rem;
   cursor: pointer;
   font-size: 18px;
   border-radius: 5px;
@@ -193,6 +209,7 @@ footer div {
 
 button:hover {
   background: #1b357e;
+  cursor: pointer;
 }
 button {
   background: #1351d8;

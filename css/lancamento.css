@@ -38,9 +38,9 @@ ul.modelcars {
   text-align: center;
   margin-bottom: 40px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   width: 100%;
-
   pointer-events: none;
 }
 .modelcars:hover > :not(:hover) {
@@ -49,10 +49,6 @@ ul.modelcars {
 
 ul.modelcars li {
   text-align: left;
-  border: 2px solid blue;
-
-  border-radius: 6px;
-  padding: 10px 0px 10px 2px;
   pointer-events: auto;
 }
 
@@ -117,7 +113,6 @@ div#compare {
   position: absolute;
   display: none;
   width: 50%;
-  max-width: 700px;
   min-width: fit-content;
   height: fit-content;
   max-height: 700px;

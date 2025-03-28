@@ -23,6 +23,7 @@ carouselArr.push(
     "lancamento.html"
   )
 );
+
 carouselArr.forEach((element) => {
   let link = document.createElement("a");
   let imagem = document.createElement("img");

@@ -9,6 +9,7 @@ class contato {
   }
   static enviarInfo(objeto) {
     this.objetoFinal = objeto;
+    console.log(this.objetoFinal);
   }
 }
 
