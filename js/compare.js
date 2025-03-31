@@ -1,5 +1,12 @@
-//car
 let carArr = [];
+let ordemCarros = [];
+const checkbox = document.querySelectorAll(".checkbox");
+
+checkbox.forEach((element, i) => {
+  element.checked = false;
+  element.value = i;
+  carArr[i] = null;
+});
 
 class Car {
   constructor(
@@ -29,17 +36,9 @@ class Car {
   }
 }
 
-const checkbox = document.querySelectorAll(".checkbox");
-
-checkbox.forEach((element, i) => {
-  element.checked = false;
-});
-
 function GetCarArrPosition(el) {
   return Number(el.value);
 }
-
-let ordemCarros = [];
 
 function SetCarToCompare(el, carClass) {
   if (!carClass instanceof Car) {

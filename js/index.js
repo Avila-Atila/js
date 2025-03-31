@@ -1,7 +1,6 @@
 import { Carousel } from "./carousel.js";
 import { carouselArr } from "./carousel.js";
 
-//insert each image on carousel
 carouselArr.push(
   new Carousel(
     "img/imagem_1.jpg",

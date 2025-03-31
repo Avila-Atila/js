@@ -1,5 +1,3 @@
-//class contato
-
 class contato {
   constructor(nome, email, telefone, mensagem) {
     this.nome = nome;

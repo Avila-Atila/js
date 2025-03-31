@@ -8,15 +8,15 @@ export class Carousel {
   }
 
   static Start(arr) {
-    this.teste = document.querySelectorAll("#carousel img");
-    this.teste2 = document.querySelectorAll("#carousel-title a");
-    this.teste3 = document.querySelectorAll("#carousel__nav span");
+    this.imagens = document.querySelectorAll("#carousel img");
+    this.links = document.querySelectorAll("#carousel-title a");
+    this.botoesNav = document.querySelectorAll("#carousel__nav span");
 
     if (arr) {
       if (arr.length > 0) {
         Carousel._sequence = -1;
         Carousel._size = arr.length;
-        this.teste3.forEach((elemento, i) => {
+        this.botoesNav.forEach((elemento, i) => {
           elemento.addEventListener("click", () => {
             clearInterval(this._interval);
             this.Next(i);
@@ -51,15 +51,15 @@ export class Carousel {
       this._sequence = param;
     }
 
-    this.teste.forEach((img, i) => {
+    this.imagens.forEach((img, i) => {
       img.style.display = i === this._sequence ? "block" : "none";
     });
 
-    this.teste2.forEach((title, i) => {
+    this.links.forEach((title, i) => {
       title.style.display = i === this._sequence ? "block" : "none";
     });
 
-    this.teste3.forEach((elemento, i) => {
+    this.botoesNav.forEach((elemento, i) => {
       if (i === this._sequence) {
         elemento.classList.add("carousel__nav__botao__selecionado");
       } else {
