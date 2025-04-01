@@ -1,11 +1,21 @@
-let carArr = [];
-let ordemCarros = [];
+const headerLinks = document.querySelectorAll("header nav li");
 const checkbox = document.querySelectorAll(".checkbox");
+let carArr = [];
+
+headerLinks.forEach((element) => {
+  element.addEventListener("mouseover", () => {
+    headerLinks[1].firstElementChild.classList.remove("headerLink");
+    element.firstElementChild.classList.add("headerLink");
+  });
+  element.addEventListener("mouseout", () => {
+    element.firstElementChild.classList.remove("headerLink");
+    headerLinks[1].firstElementChild.classList.add("headerLink");
+  });
+});
 
 checkbox.forEach((element, i) => {
   element.checked = false;
   element.value = i;
-  carArr[i] = null;
 });
 
 class Car {
@@ -36,24 +46,18 @@ class Car {
   }
 }
 
-function GetCarArrPosition(el) {
-  return Number(el.value);
-}
-
 function SetCarToCompare(el, carClass) {
   if (!carClass instanceof Car) {
     return "You need set a Car Class";
   }
 
   if (el.checked) {
-    carArr[GetCarArrPosition(el)] = carClass;
-    ordemCarros.push(el.value);
+    carArr.push(carClass);
   } else {
-    carArr[GetCarArrPosition(el)] = null;
-    ordemCarros = ordemCarros.filter((x) => x !== el.value);
+    carArr = carArr.filter((x) => x.nome !== carClass.nome);
   }
 
-  if (ordemCarros.length >= 2) {
+  if (carArr.length >= 2) {
     checkbox.forEach((element) => {
       if (!element.checked) {
         element.setAttribute("disabled", true);
@@ -67,14 +71,13 @@ function SetCarToCompare(el, carClass) {
 }
 
 function ShowCompare() {
-  if (ordemCarros.length != 2) {
+  if (carArr.length != 2) {
     alert("Precisa marcar 2 carros para apresentar a comparação");
     return;
   }
+  ordenarCarros(carArr);
 
-  ordemCarros.sort();
-
-  UpdateCompareTable(ordemCarros);
+  UpdateCompareTable(carArr);
 
   document.getElementById("compare").style.display = "block";
 }
@@ -83,10 +86,16 @@ function HideCompare() {
   document.getElementById("compare").style.display = "none";
 }
 
+function ordenarCarros(arr) {
+  if (arr[0].preco > arr[1].preco) {
+    [arr[0], arr[1]] = [arr[1], arr[0]];
+  }
+}
+
 function UpdateCompareTable(lista) {
   // document.querySelectorAll("table tr img").forEach((img) => img.remove());
 
-  lista.forEach((posicao, i) => {
+  lista.forEach((carro, i) => {
     let posicaoImagem = document.getElementById(`compare_image_${i}`);
     let imagem = posicaoImagem.querySelector("img");
 
@@ -96,28 +105,26 @@ function UpdateCompareTable(lista) {
       posicaoImagem.appendChild(imagem);
     }
 
-    imagem.src = carArr[posicao].image;
+    imagem.src = carro.image;
 
-    document.getElementById(`compare_modelo_${i}`).innerText =
-      carArr[posicao].nome;
+    document.getElementById(`compare_modelo_${i}`).innerText = carro.nome;
     document.getElementById(`compare_alturacacamba_${i}`).innerText =
-      carArr[posicao].alturaCacamba;
+      carro.alturaCacamba;
     document.getElementById(`compare_alturaveiculo_${i}`).innerText =
-      carArr[posicao].alturaVeiculo;
+      carro.alturaVeiculo;
     document.getElementById(`compare_alturasolo_${i}`).innerText =
-      carArr[posicao].alturaSolo;
+      carro.alturaSolo;
     document.getElementById(`compare_capacidadecarga_${i}`).innerText =
-      carArr[posicao].capacidadeCarga;
-    document.getElementById(`compare_motor_${i}`).innerText =
-      carArr[posicao].motor;
-    document.getElementById(`compare_potencia_${i}`).innerText =
-      carArr[posicao].potencia;
+      carro.capacidadeCarga;
+    document.getElementById(`compare_motor_${i}`).innerText = carro.motor;
+    document.getElementById(`compare_potencia_${i}`).innerText = carro.potencia;
     document.getElementById(`compare_volumecacamba_${i}`).innerText =
-      carArr[posicao].volumeCacamba;
-    document.getElementById(`compare_roda_${i}`).innerText =
-      carArr[posicao].roda;
-    document.getElementById(`compare_preco_${i}`).innerText = carArr[
-      posicao
-    ].preco.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+      carro.volumeCacamba;
+    document.getElementById(`compare_roda_${i}`).innerText = carro.roda;
+    document.getElementById(`compare_preco_${i}`).innerText =
+      carro.preco.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      });
   });
 }

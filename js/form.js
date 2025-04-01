@@ -1,3 +1,16 @@
+const headerLinks = document.querySelectorAll("header nav li");
+
+headerLinks.forEach((element) => {
+  element.addEventListener("mouseover", () => {
+    headerLinks[2].firstElementChild.classList.remove("headerLink");
+    element.firstElementChild.classList.add("headerLink");
+  });
+  element.addEventListener("mouseout", () => {
+    element.firstElementChild.classList.remove("headerLink");
+    headerLinks[2].firstElementChild.classList.add("headerLink");
+  });
+});
+
 class contato {
   constructor(nome, email, telefone, mensagem) {
     this.nome = nome;
