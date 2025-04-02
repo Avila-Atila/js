@@ -1,5 +1,6 @@
 const headerLinks = document.querySelectorAll("header nav li");
 const checkbox = document.querySelectorAll(".checkbox");
+const compararCarros = document.getElementById("button__comparar");
 let carArr = [];
 
 headerLinks.forEach((element) => {
@@ -58,12 +59,14 @@ function SetCarToCompare(el, carClass) {
   }
 
   if (carArr.length >= 2) {
+    compararCarros.classList.add("button__selecionado");
     checkbox.forEach((element) => {
       if (!element.checked) {
         element.setAttribute("disabled", true);
       }
     });
   } else {
+    compararCarros.classList.remove("button__selecionado");
     checkbox.forEach((element) => {
       element.removeAttribute("disabled");
     });

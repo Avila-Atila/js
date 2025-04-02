@@ -5,13 +5,19 @@
   --cor-branca: white;
 }
 
-@keyframes teste {
+@keyframes posicaoLink {
   from {
     padding-top: 5px;
   }
   to {
     padding-top: 0;
   }
+}
+
+.headerLink {
+  border-top: 2px solid var(--cor-azul-fraca);
+  animation: posicaoLink 0.3s;
+  text-shadow: 1px 1px 1px var(--cor-azul-fraca);
 }
 
 body {
@@ -113,7 +119,6 @@ div#carousel {
 }
 div#carousel-title a {
   text-decoration: none;
-  animation: transition 1s;
   color: #1351d8;
   margin: 0 auto;
   max-width: fit-content;
@@ -220,18 +225,18 @@ footer div {
 }
 
 button:hover {
-  background: #1b357e;
+  background: var(--cor-azul-forte) !important;
   cursor: pointer;
 }
 button {
-  background: #1351d8;
+  background: var(--cor-azul-fraca);
   color: #fff;
   border: 0px;
   border-radius: 10px;
 }
-
-.headerLink {
-  border-top: 2px solid var(--cor-azul-fraca);
-  animation: teste 0.3s;
-  text-shadow: 1px 1px 1px var(--cor-azul-fraca);
+#button__comparar {
+  background-color: grey;
+}
+.button__selecionado {
+  background: var(--cor-azul-fraca) !important;
 }

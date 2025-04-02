@@ -44,12 +44,21 @@ ul.modelcars {
   pointer-events: none;
 }
 .modelcars:hover > :not(:hover) {
+  transition: 0.5s;
   opacity: 0.65;
 }
 
 ul.modelcars li {
   text-align: left;
   pointer-events: auto;
+  border: 2px solid white;
+  transition: 0.5s;
+}
+.modelcars li:hover {
+  border-radius: 6px;
+  border: 2px solid white;
+  border-style: inset;
+  box-shadow: 0px 0px 20px var(--cor-azul-forte);
 }
 
 img.photocar {
@@ -82,6 +91,7 @@ img.photocar {
   display: block;
   text-align: left;
   font-size: 10px;
+  margin-bottom: 1%;
 }
 
 table {
