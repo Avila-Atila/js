@@ -3,13 +3,13 @@ const checkbox = document.querySelectorAll(".checkbox");
 const compararCarros = document.getElementById("button__comparar");
 let carArr = [];
 
-headerLinks.forEach((element) => {
-  element.addEventListener("mouseover", () => {
+headerLinks.forEach((link) => {
+  link.addEventListener("mouseover", () => {
     headerLinks[1].firstElementChild.classList.remove("headerLink");
-    element.firstElementChild.classList.add("headerLink");
+    link.firstElementChild.classList.add("headerLink");
   });
-  element.addEventListener("mouseout", () => {
-    element.firstElementChild.classList.remove("headerLink");
+  link.addEventListener("mouseout", () => {
+    link.firstElementChild.classList.remove("headerLink");
     headerLinks[1].firstElementChild.classList.add("headerLink");
   });
 });
@@ -58,7 +58,7 @@ function SetCarToCompare(el, carClass) {
     carArr = carArr.filter((x) => x.nome !== carClass.nome);
   }
 
-  if (carArr.length >= 2) {
+  if (carArr.length == 2) {
     compararCarros.classList.add("button__selecionado");
     checkbox.forEach((element) => {
       if (!element.checked) {

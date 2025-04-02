@@ -1,12 +1,13 @@
 const headerLinks = document.querySelectorAll("header nav li");
+const campo = document.querySelector('[name="contato"]');
 
-headerLinks.forEach((element) => {
-  element.addEventListener("mouseover", () => {
+headerLinks.forEach((link) => {
+  link.addEventListener("mouseover", () => {
     headerLinks[2].firstElementChild.classList.remove("headerLink");
-    element.firstElementChild.classList.add("headerLink");
+    link.firstElementChild.classList.add("headerLink");
   });
-  element.addEventListener("mouseout", () => {
-    element.firstElementChild.classList.remove("headerLink");
+  link.addEventListener("mouseout", () => {
+    link.firstElementChild.classList.remove("headerLink");
     headerLinks[2].firstElementChild.classList.add("headerLink");
   });
 });
@@ -18,9 +19,9 @@ class contato {
     this.telefone = telefone;
     this.mensagem = mensagem;
   }
-  static enviarInfo(objeto) {
-    this.objetoFinal = objeto;
-    console.log(this.objetoFinal);
+  static enviarInfo(respostaForm) {
+    this.objetoFinal = respostaForm;
+    console.table(this.objetoFinal);
   }
 }
 
@@ -33,8 +34,6 @@ function Post(form) {
   );
   contato.enviarInfo(data);
 }
-
-const campo = document.querySelector('[name="contato"]');
 
 function Enviar() {
   let nome = document.getElementById("nomeid");

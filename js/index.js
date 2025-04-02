@@ -3,13 +3,13 @@ import { carouselArr } from "./carousel.js";
 
 const headerLinks = document.querySelectorAll("header nav li");
 
-headerLinks.forEach((element) => {
-  element.addEventListener("mouseover", () => {
+headerLinks.forEach((link) => {
+  link.addEventListener("mouseover", () => {
     headerLinks[0].firstElementChild.classList.remove("headerLink");
-    element.firstElementChild.classList.add("headerLink");
+    link.firstElementChild.classList.add("headerLink");
   });
-  element.addEventListener("mouseout", () => {
-    element.firstElementChild.classList.remove("headerLink");
+  link.addEventListener("mouseout", () => {
+    link.firstElementChild.classList.remove("headerLink");
     headerLinks[0].firstElementChild.classList.add("headerLink");
   });
 });
@@ -36,19 +36,19 @@ carouselArr.push(
   )
 );
 
-carouselArr.forEach((element) => {
+carouselArr.forEach((carro) => {
   let link = document.createElement("a");
   let imagem = document.createElement("img");
   let span = document.createElement("span");
-  if (element.url != "lancamento.html") {
-    link.setAttribute("href", element.url);
+  if (carro.url != "lancamento.html") {
+    link.setAttribute("href", carro.url);
     link.setAttribute("target", "_blank");
   } else {
-    link.setAttribute("href", element.url);
+    link.setAttribute("href", carro.url);
   }
 
-  link.innerText = element.title;
-  imagem.setAttribute("src", element.img);
+  link.innerText = carro.title;
+  imagem.setAttribute("src", carro.img);
   imagem.classList.add("imagem");
   span.classList.add("carousel__nav__botao");
   document
