@@ -225,7 +225,7 @@ footer div {
 }
 
 button:hover {
-  background: var(--cor-azul-forte) !important;
+  background: var(--cor-azul-forte);
   cursor: pointer;
 }
 button {
@@ -239,4 +239,8 @@ button {
 }
 .button__selecionado {
   background: var(--cor-azul-fraca) !important;
+}
+
+.button__selecionado:hover {
+  background: var(--cor-azul-forte) !important;
 }
