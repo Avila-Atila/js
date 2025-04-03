@@ -38,9 +38,8 @@
           <h2 class="titulo">Sobre Você</h2>
           <form
             id="formulario"
-            onsubmit="Post(this);"
-            action="index.html"
-            method="get"
+            method="post"
+            onsubmit="Post(this); return false"
           >
             <input
               type="text"

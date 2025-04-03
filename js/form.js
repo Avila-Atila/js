@@ -1,5 +1,6 @@
 const headerLinks = document.querySelectorAll("header nav li");
-const campo = document.querySelector('[name="contato"]');
+const campos = document.querySelectorAll(".fordform");
+const nome = document.getElementById("nomeid");
 
 headerLinks.forEach((link) => {
   link.addEventListener("mouseover", () => {
@@ -13,15 +14,15 @@ headerLinks.forEach((link) => {
 });
 
 class contato {
-  constructor(nome, email, telefone, mensagem) {
+  constructor(nome, email, telefone, mensagem, tipoDeMensagem) {
     this.nome = nome;
     this.email = email;
     this.telefone = telefone;
     this.mensagem = mensagem;
+    this.tipoDeMensagem = tipoDeMensagem;
   }
   static enviarInfo(respostaForm) {
-    this.objetoFinal = respostaForm;
-    console.table(this.objetoFinal);
+    console.table(respostaForm);
   }
 }
 
@@ -30,17 +31,22 @@ function Post(form) {
     form.elements.namedItem("nome").value,
     form.elements.namedItem("email").value,
     form.elements.namedItem("telefone").value,
-    form.elements.namedItem("mensagem").value
+    form.elements.namedItem("mensagem").value,
+    form.elements.namedItem("contato").value
   );
   contato.enviarInfo(data);
 }
 
 function Enviar() {
-  let nome = document.getElementById("nomeid");
-
-  if (nome.value != "" && campo.value != "") {
+  let validar = true;
+  campos.forEach((input) => {
+    if (input.value === "") {
+      validar = false;
+    }
+  });
+  if (validar) {
     alert(
-      `Obrigado sr(a) ${nome.value} os seus dados foram encaminhados com sucesso. `
+      `Obrigado sr(a) ${nome.value}, os seus dados foram encaminhados com sucesso!`
     );
   }
 }
